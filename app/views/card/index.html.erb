@@ -1,0 +1,9 @@
+<table>
+<% @cards.each do |card| %>
+  <tr>
+    <td><%= card.card_name %></td>
+    <td><%= card.set %></td>
+    <td><%= card.set_sym %></td>
+  </tr>
+<% end %>
+</table>
