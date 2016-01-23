@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   #get 'cards' => 'card#index'
   get 'c/:set_sym' => 'card#show', as: :card
+  get 'index' => 'card#index', as: :index
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -57,4 +58,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+  end

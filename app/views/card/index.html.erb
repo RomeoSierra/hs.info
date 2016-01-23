@@ -1,9 +1,16 @@
+<% form_tag index_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
 <table>
 <% @cards.each do |card| %>
   <tr>
     <td><%= card.card_name %></td>
-    <td><%= card.set %></td>
-    <td><%= card.set_sym %></td>
+    <td><%= card.set %> (<%= card.rarity.capitalize %>)</td>
+    <td><%= card.align.to_s.capitalize %> <%= card.card_type.to_s.capitalize %></td>
   </tr>
 <% end %>
 </table>

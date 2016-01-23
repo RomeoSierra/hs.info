@@ -8,4 +8,7 @@ class CardController < ApplicationController
 		@cards = Card.all
 	end
 
+	def search_
+  		@cards = Card.search(params[:search])
+	end
 end
