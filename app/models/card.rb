@@ -6,12 +6,14 @@ class Card < ActiveRecord::Base
 
 	enum rarity: [ :basic, :common, :rare, :epic, :legendary ]
 
-	def self.search(search)
-  		if search
-    		find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-  		else
-    		find(:all)
-  		end
+	# def get(q)
+	# 	@results = []
+	# 	where Card.card_name.contsins(q) => @results
+	# 	return @results
+	# end
+
+	def self.search(q)
+  		where("card_name like ?", "%#{q}%") 
 	end
 
 end

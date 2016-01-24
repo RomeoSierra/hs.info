@@ -1,14 +1,14 @@
-<% form_tag index_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
+
+
+<%= form_tag(index_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Cards" %>
+  <%= submit_tag "Search", :name => nil %>
 <% end %>
 
 <table>
 <% @cards.each do |card| %>
   <tr>
-    <td><%= card.card_name %></td>
+    <td><%= link_to card.card_name, card_path(card.set_sym) %></td>
     <td><%= card.set %> (<%= card.rarity.capitalize %>)</td>
     <td><%= card.align.to_s.capitalize %> <%= card.card_type.to_s.capitalize %></td>
   </tr>
