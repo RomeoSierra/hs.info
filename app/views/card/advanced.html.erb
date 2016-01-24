@@ -1,0 +1,20 @@
+<% if false %>
+
+<% form_for @results do |c| %>
+  <p>
+    <%= c.label :keywords %><br />
+    <%= c.text_field :keywords %>
+  </p>
+  <p>
+    <%= c.label :q_align %><br />
+    <%= c.collection_select :q_align, Align.all, :id, :name, :include_blank => true %>
+  </p>
+  <p>
+    Price Range<br />
+    <%= c.text_field :minimum_price, :size => 7 %> -
+    <%= c.text_field :maximum_price, :size => 7 %>
+  </p>
+  <p><%= c.submit "Submit" %></p>
+<% end %>
+
+<% end %>
