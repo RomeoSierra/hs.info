@@ -1,12 +1,14 @@
 <div>
+	<div>
+		<%= image_tag("#{@card.set_sym}.png") %>
+	</div>
     <h2> <%= link_to @card.card_name, card_path %> </h2>
     
     <p> <%= @card.align.capitalize %> <%= @card.card_type.capitalize%> (<%= @card.subtype %>) </p>
 	
     <p> (<%= @card.cost %>) <%= "#{@card.power}/#{@card.toughness}" %></p>
 	
-    <p> Card text: <%= @card.card_text %></p>
-    <p> Flavor text: <i><%= @card.flavor_text %></i></p>
+    <p> Card Text: <%= @card.card_text %></p>
 
-    <p> Set: <%= @card.set %> (<%= @card.rarity.capitalize %>) </p>
+    <p> Set: <%= @card.set %> (<%= @card.rarity.chars.first.capitalize %>) </p>
   </div>

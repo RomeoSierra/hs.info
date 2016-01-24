@@ -16,4 +16,6 @@ class Card < ActiveRecord::Base
   		where("card_name like ?", "%#{q}%") 
 	end
 
+	
+
 end
