@@ -1,9 +1,12 @@
 
-
+<% if false %>
 <%= form_tag(index_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Cards" %>
   <%= submit_tag "Search", :name => nil %>
 <% end %>
+<% end %>
+
+<%= render "title_search_box" %>
 
 
 <table>

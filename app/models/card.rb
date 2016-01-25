@@ -6,10 +6,11 @@ class Card < ActiveRecord::Base
 
 	enum rarity: [ :basic, :common, :rare, :epic, :legendary ]
 
+	include FormHelper
 
-	def self.search(q)
-  		where("card_name like ?", "%#{q}%") 
-	end
+	# def self.search(q)
+ #  		where("card_name like ?", "%#{q}%") 
+	# end
 
 	# def results
 	# 	@results ||= find_cards
