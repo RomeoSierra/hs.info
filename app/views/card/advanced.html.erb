@@ -18,14 +18,3 @@
 <% end %>
 
 <% end %>
-
-
-<%= search_form_for @q do |f| %>
-
-  <tr>
-  <td><%= f.label :card_name_cont %></td>
-  <td><%= f.search_field :card_name_cont %></td>
-  </tr>
-
-  <%= f.submit %>
-<% end %>

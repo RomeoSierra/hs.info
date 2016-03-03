@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'c/:set_sym' => 'card#show', as: :card
   get 'search' => 'card#index', as: :index
-  get 'adv' => 'card#advanced'
+  # get 'adv' => 'card#advanced'
   # get "search/index"
 
   # The priority is based upon order of creation: first created -> highest priority.

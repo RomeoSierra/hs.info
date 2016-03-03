@@ -7,22 +7,16 @@ class CardController < ApplicationController
 	end
 	
 
-	# def index
- #  		if params[:search]
- #    		@cards = Card.search(params[:search])
- #  		else
- #    		@cards = Card.all
- #  		end
-	# end
+	def index
+  		if params[:search]
+    		@cards = Card.search(params[:search])
+  		else
+    		@cards = Card.all
+  		end
+	end
 	
 
-	# def search
- #  		@cards = Card.search(params[:search])
-	# end
-
-
-	def index
-		@search = Card.search(params[:q])
-		@cards = @search.result
+	def search
+  		@cards = Card.search(params[:search])
 	end
 end
