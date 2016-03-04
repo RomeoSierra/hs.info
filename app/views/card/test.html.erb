@@ -1,0 +1,20 @@
+
+
+<div>
+<%= form_tag(index_path, :method => "get", id: "search-form") %>
+  <%= select_tag "q_align", options_for_select([["Druid", "druid"], ["Hunter", "hunter"], ["Mage", "mage"], ["Paladin", "paladin"], ["Priest", "priest"], ["Rogue", "Rogue"], ["Shaman", "shaman"], ["Warlock", "warlock"], ["Warrior", "warrior"], ["Neutral", "neutral"]]), multiple: true, include_blank: "ALL" %>
+  <%= submit_tag("Search") %>
+
+</div>
+
+
+<!-- @cards = Cards.All
+@cards = filter_by_name( @cards, params["name"] )
+filter_by_name ( cards, name ) {
+   if ( name.present? )  return cards.where( "CARD_NAME" = name )
+   else return cards
+} -->
+
+<!-- @cards = Card.all
+@cards.filter_by_name!
+@cards.each do { |c| if c.name == @cards.card_name >> array[], @cards = array } -->

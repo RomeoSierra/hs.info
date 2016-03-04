@@ -6,5 +6,62 @@
   <%= render 'navigation' %>
 </div>
 
+<h1>Advanced Search</h1>
 
+<table class="diamonds">
+  <tr>
+    <td>Card Name</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Set</td>
+    <td>
+      <%= select_tag "q_set", options_for_select([["Basic", "bas"], ["Classic", "cla"], ["Reward", "rew"], ["Naxxramas", "nax"], ["Goblins vs Gnomes", "gvg"], ["Blackrock Mountain", "brm"], ["Grand Tournament", "tgt"], ["League of Explorers", "loe"]]), multiple: true, include_blank: "ALL" %>
+    </td>
+  </tr>
+  <tr>
+    <td>Rarity</td>
+    <td>
+      <%= select_tag "q_rarity", options_for_select([["Basic", "bas"], ["Common", "common"], ["Rare", "rare"], ["Epic", "epic"], ["Legendary", "legendary"]]), multiple: true, include_blank: "ALL" %>
+    </td>
+  </tr>
+  <tr>
+    <td>Class</td>
+    <td>
+      <%= select_tag "q_align", options_for_select([["Druid", "druid"], ["Hunter", "hunter"], ["Mage", "mage"], ["Paladin", "paladin"], ["Priest", "priest"], ["Rogue", "Rogue"], ["Shaman", "shaman"], ["Warlock", "warlock"], ["Warrior", "warrior"], ["Neutral", "neutral"]]), multiple: true, include_blank: "ALL" %>
+    </td>
+  </tr>
+  <tr>
+    <td>Card Type</td>
+    <td>
+      <%= select_tag "q_type", options_for_select([["Minion", "minion"], ["Spell", "spell"], ["Weapon", "weapon"]]), multiple: true, include_blank: "ALL" %>
+    </td>
+  </tr>
+  <tr>
+    <td>Subtype</td>
+    <td>
+      <%= select_tag "q_subtype", options_for_select([["Beast", "Beast"], ["Demon", "Demon"], ["Dragon", "Dragon"], ["Mech", "Mech"], ["Murloc", "Murloc"], ["Pirate", "Pirate"], ["Totem", "Totem"], ["Secret", "Secret"]]), multiple: true, include_blank: "ALL" %>
+    </td>
+  </tr>
+  <tr>
+    <td>Cost</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Attack</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Health(or Durability)</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Card Text</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Format Legality</td>
+    <td></td>
+  </tr>
+</table>
 

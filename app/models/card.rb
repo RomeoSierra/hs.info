@@ -11,6 +11,7 @@ class Card < ActiveRecord::Base
   		where("card_name like ?", "%#{q}%") 
 	end
 
+
 	# def results
 	# 	@results ||= find_cards
 	# end

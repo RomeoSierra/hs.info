@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'c/:set_sym' => 'card#show', as: :card
   get 'index' => 'card#index', as: :index
   get 'adv' => 'card#advanced'
-  # get "search/index"
+  get 'test' => 'card#test'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
