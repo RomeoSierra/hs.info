@@ -1,10 +1,10 @@
 
+<%= stylesheet_link_tag "reset.css" %>
+<%= stylesheet_link_tag "main.css" %>
 
-<%= form_tag(index_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Cards" %>
-  <%= submit_tag "Search", :name => nil %>
-<% end %>
-
+<div>
+  <%= render 'navigation' %>
+</div>
 
 <table>
 <% @cards = @results unless @results.blank? %>

@@ -1,0 +1,20 @@
+
+
+
+.spades {
+	display: inline-block;
+	padding: 20px;
+	font-weight: bold;
+}
+
+.clubs {
+	padding: 20px 20px 40px 20px;
+}
+
+body {
+	background-color: tan;
+}
+
+nav {
+	background-color: brown;
+}
