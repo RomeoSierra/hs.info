@@ -15,7 +15,7 @@ class Card < ActiveRecord::Base
 
 		q_results = Card.all
 
-		q_results = q_results.where(independent: query_hash[:q_collect]) if :q_collect == true
+		q_results = q_results.where(independent: query_hash[:q_collect]) if :q_collect.present?
 
 		q_results = q_results.where("card_name like ?", "%#{query_hash[:q_name]}%") if query_hash[:q_name].present?
 
@@ -30,6 +30,10 @@ class Card < ActiveRecord::Base
 		q_results = q_results.where(subtype: query_hash[:q_subtype]) if query_hash[:q_subtype].present?
 
 		q_results = q_results.where("card_text like ?", "%#{query_hash[:q_rules_text]}%") if query_hash[:q_rules_text].present?
+
+		# q_results = q_results.where(wild_legal: query_hash[:q_wild_legal]) if :q_wild_legal.present?
+
+		# q_results = q_results.where(kraken_legal: query_hash[:q_kraken_legal].present?) if query_hash[:q_kraken_legal].present?
 
 		return q_results
 	end

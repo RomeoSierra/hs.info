@@ -10,7 +10,6 @@
 
 <table class="diamonds">
   <%= form_tag(index_path, :method => "get", id: "complex-search") do %>
-  <%= hidden_field_tag(:q_collect, true) %>
   <tr>
     <td>Card Name</td>
     <td><%= text_field_tag :q_name, params[:q_name], placeholder: "" %></td>
@@ -24,19 +23,19 @@
   <tr>
     <td>Rarity</td>
     <td>
-      <%= select_tag :q_rarity, options_for_select([["Basic", :basic], ["Common", :common], ["Rare", :rare], ["Epic", :epic], ["Legendary", :legendary]]), multiple: true, include_blank: "", :size => 6 %>
+      <%= select_tag :q_rarity, options_for_select([["Basic", "0"], ["Common", "1"], ["Rare", "2"], ["Epic", "3"], ["Legendary", "4"]]), multiple: true, include_blank: "", :size => 6 %>
     </td>
   </tr>
   <tr>
     <td>Class</td>
     <td>
-      <%= select_tag :q_align, options_for_select([["Druid", :druid], ["Hunter", :hunter], ["Mage", :mage], ["Paladin", :paladin], ["Priest", :priest], ["Rogue", :rogue], ["Shaman", :shaman], ["Warlock", :warlock], ["Warrior", :warrior], ["Neutral", :neutral]]), multiple: true, include_blank: "", :size => 11 %>
+      <%= select_tag :q_align, options_for_select([["Druid", "0"], ["Hunter", "1"], ["Mage", "2"], ["Paladin", "3"], ["Priest", "4"], ["Rogue", "5"], ["Shaman", "6"], ["Warlock", "7"], ["Warrior", "8"], ["Neutral", "9"]]), multiple: true, include_blank: "", :size => 11 %>
     </td>
   </tr>
   <tr>
     <td>Card Type</td>
     <td>
-      <%= select_tag :q_type, options_for_select([["Minion", :minion], ["Spell", :spell], ["Weapon", :weapon]]), multiple: true, include_blank: "", :size => 4 %>
+      <%= select_tag :q_type, options_for_select([["Minion", "0"], ["Spell", "1"], ["Weapon", "2"]]), multiple: true, include_blank: "", :size => 4 %>
     </td>
   </tr>
   <tr>
@@ -64,13 +63,11 @@
   <tr>
     <td>Format Legality</td>
     <td><%= check_box_tag(:q_kraken_legal)%>
-        <%= label_tag(:q_kraken_legal, "Standard") %>
-        <%= check_box_tag(:q_wild_legal) %>
-        <%= label_tag(:q_wild_legal, "Wild") %>
-        (Will return cards legal in any of the selected formats)</td>
+        <%= label_tag(:q_kraken_legal, "Standard") %></td>
   </tr>
   <tr>
-    <td><%= submit_tag "Search", params => nil %></td>
+    <%= hidden_field_tag(:q_collect, true) %>
+    <td><%= submit_tag "Search"%></td>
   </tr>
   <% end %>
 </table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304055529) do
+ActiveRecord::Schema.define(version: 20160306194334) do
 
   create_table "cards", force: :cascade do |t|
     t.string  "set_sym"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20160304055529) do
     t.boolean "independent"
     t.string  "created_cards"
     t.string  "trivia"
-    t.boolean "wildlegal"
-    t.boolean "krakenlegal"
+    t.boolean "wild_legal"
+    t.boolean "kraken_legal"
   end
 
 end

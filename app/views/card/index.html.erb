@@ -7,15 +7,17 @@
 </div>
 
 <table class="hearts">
-<% @cards = @results unless @results.blank? %>
+
 <% @cards.each do |card| %>
   <tr>
     <td><%= link_to card.card_name, card_path(card.set_sym) %></td>
     <td><%= card.align.to_s.capitalize %></td>
     <td><%= card.card_type.capitalize %></td>
-    <td><%= "(#{card.subtype})" if card.subtype.present? %></td>
+    <!-- <td><%= "(#{card.subtype})" if card.subtype.present? %></td> -->
     <td>(<%= card.cost; %>) <%= "#{card.power}/#{card.toughness}" if card.power.present? && card.toughness.present? %></td>
-    <td><%= card.set; %><!-- <br><%= "(#{card.rarity.capitalize})" unless card.rarity == "basic" %> --></td>
+    <td><%= card.set; %>
+    	<!-- <br><%= "(#{card.rarity.capitalize})" unless card.rarity == "basic" %> -->
+    </td>
     <td><%= card.card_text %></td>
   </tr>
 <% end %>
