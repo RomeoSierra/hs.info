@@ -9,59 +9,69 @@
 <h1>Advanced Search</h1>
 
 <table class="diamonds">
+  <%= form_tag(index_path, :method => "get", id: "complex-search") do %>
+  <%= hidden_field_tag(:q_collect, true) %>
   <tr>
     <td>Card Name</td>
-    <td></td>
+    <td><%= text_field_tag :q_name, params[:q_name], placeholder: "" %></td>
   </tr>
   <tr>
     <td>Set</td>
     <td>
-      <%= select_tag "q_set", options_for_select([["Basic", "bas"], ["Classic", "cla"], ["Reward", "rew"], ["Naxxramas", "nax"], ["Goblins vs Gnomes", "gvg"], ["Blackrock Mountain", "brm"], ["Grand Tournament", "tgt"], ["League of Explorers", "loe"]]), multiple: true, include_blank: "ALL" %>
+      <%= select_tag :q_set, options_for_select([["Basic", "Basic"], ["Classic", "Classic"], ["Reward", "Reward"], ["Naxxramas", "Naxxramas"], ["Goblins vs Gnomes", "Goblins vs Gnomes"], ["Blackrock Mountain", "Blackrock Mountain"], ["The Grand Tournament", "The Grand Tournament"], ["League of Explorers", "League of Explorers"]]), multiple: true, include_blank: "", :size => 5 %>
     </td>
   </tr>
   <tr>
     <td>Rarity</td>
     <td>
-      <%= select_tag "q_rarity", options_for_select([["Basic", "bas"], ["Common", "common"], ["Rare", "rare"], ["Epic", "epic"], ["Legendary", "legendary"]]), multiple: true, include_blank: "ALL" %>
+      <%= select_tag :q_rarity, options_for_select([["Basic", :basic], ["Common", :common], ["Rare", :rare], ["Epic", :epic], ["Legendary", :legendary]]), multiple: true, include_blank: "", :size => 6 %>
     </td>
   </tr>
   <tr>
     <td>Class</td>
     <td>
-      <%= select_tag "q_align", options_for_select([["Druid", "druid"], ["Hunter", "hunter"], ["Mage", "mage"], ["Paladin", "paladin"], ["Priest", "priest"], ["Rogue", "Rogue"], ["Shaman", "shaman"], ["Warlock", "warlock"], ["Warrior", "warrior"], ["Neutral", "neutral"]]), multiple: true, include_blank: "ALL" %>
+      <%= select_tag :q_align, options_for_select([["Druid", :druid], ["Hunter", :hunter], ["Mage", :mage], ["Paladin", :paladin], ["Priest", :priest], ["Rogue", :rogue], ["Shaman", :shaman], ["Warlock", :warlock], ["Warrior", :warrior], ["Neutral", :neutral]]), multiple: true, include_blank: "", :size => 11 %>
     </td>
   </tr>
   <tr>
     <td>Card Type</td>
     <td>
-      <%= select_tag "q_type", options_for_select([["Minion", "minion"], ["Spell", "spell"], ["Weapon", "weapon"]]), multiple: true, include_blank: "ALL" %>
+      <%= select_tag :q_type, options_for_select([["Minion", :minion], ["Spell", :spell], ["Weapon", :weapon]]), multiple: true, include_blank: "", :size => 4 %>
     </td>
   </tr>
   <tr>
     <td>Subtype</td>
     <td>
-      <%= select_tag "q_subtype", options_for_select([["Beast", "Beast"], ["Demon", "Demon"], ["Dragon", "Dragon"], ["Mech", "Mech"], ["Murloc", "Murloc"], ["Pirate", "Pirate"], ["Totem", "Totem"], ["Secret", "Secret"]]), multiple: true, include_blank: "ALL" %>
+      <%= select_tag :q_subtype, options_for_select([["Beast", "Beast"], ["Demon", "Demon"], ["Dragon", "Dragon"], ["Mech", "Mech"], ["Murloc", "Murloc"], ["Pirate", "Pirate"], ["Totem", "Totem"], ["Secret", "Secret"]]), multiple: true, include_blank: "", :size => 5 %>
     </td>
   </tr>
   <tr>
     <td>Cost</td>
-    <td></td>
+    <td><%= select_tag :q_cost_mod, options_for_select([["=", "1"], ["<", "2"], [">", "3"], ["<=", "4"], [">=", "5"]]), multiple: false %><%= select_tag :q_cost_val, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["12", "12"], ["20", "20"]]), include_blank: "" %></td>
   </tr>
   <tr>
     <td>Attack</td>
-    <td></td>
+    <td><%= select_tag :q_power_mod, options_for_select([["=", "1"], ["<", "2"], [">", "3"], ["<=", "4"], [">=", "5"]]), multiple: false %><%= select_tag :q_power_val, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"]]), include_blank: "" %></td>
   </tr>
   <tr>
-    <td>Health(or Durability)</td>
-    <td></td>
+    <td>Health(Durability)</td>
+    <td><%= select_tag :q_toughness_mod, options_for_select([["=", "1"], ["<", "2"], [">", "3"], ["<=", "4"], [">=", "5"]]), multiple: false %><%= select_tag :q_toughness_val, options_for_select([["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["15", "15"]]), include_blank: "" %></td>
   </tr>
   <tr>
     <td>Card Text</td>
-    <td></td>
+    <td><%= text_field_tag :q_rules_text, params[:q_rules_text], placeholder: "" %></td>
   </tr>
   <tr>
     <td>Format Legality</td>
-    <td></td>
+    <td><%= check_box_tag(:q_kraken_legal)%>
+        <%= label_tag(:q_kraken_legal, "Standard") %>
+        <%= check_box_tag(:q_wild_legal) %>
+        <%= label_tag(:q_wild_legal, "Wild") %>
+        (Will return cards legal in any of the selected formats)</td>
   </tr>
+  <tr>
+    <td><%= submit_tag "Search", params => nil %></td>
+  </tr>
+  <% end %>
 </table>
 

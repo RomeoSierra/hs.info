@@ -7,16 +7,29 @@ class Card < ActiveRecord::Base
 	enum rarity: [ :basic, :common, :rare, :epic, :legendary ]
 
 
-	def self.search(q)
-  		where("card_name like ?", "%#{q}%") 
-	end
+	# def self.search(q)
+ #  		where("card_name like ?", "%#{q}%") 
+	# end
 
 	def self.complex_query(query_hash) 
 
 		q_results = Card.all
 
-	# 	results = results.where{ "name like Q", query_hash[:q_name] } if queryHash[:q_name].present?
-	# 	results = resulsaf
+		q_results = q_results.where(independent: query_hash[:q_collect]) if :q_collect == true
+
+		q_results = q_results.where("card_name like ?", "%#{query_hash[:q_name]}%") if query_hash[:q_name].present?
+
+		q_results = q_results.where(set: query_hash[:q_set]) if query_hash[:q_set].present?
+
+		q_results = q_results.where(rarity: query_hash[:q_rarity]) if query_hash[:q_rarity].present?
+
+		q_results = q_results.where(align: query_hash[:q_align]) if query_hash[:q_align].present?
+
+		q_results = q_results.where(card_type: query_hash[:q_type]) if query_hash[:q_type].present?
+
+		q_results = q_results.where(subtype: query_hash[:q_subtype]) if query_hash[:q_subtype].present?
+
+		q_results = q_results.where("card_text like ?", "%#{query_hash[:q_rules_text]}%") if query_hash[:q_rules_text].present?
 
 		return q_results
 	end

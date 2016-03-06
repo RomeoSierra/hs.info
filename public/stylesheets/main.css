@@ -20,5 +20,9 @@ nav {
 }
 
 .diamonds td {
-	padding: 10px;
+	padding: 7px;
+}
+
+.hearts td {
+	padding: 3px;
 }
