@@ -8,7 +8,7 @@ class Card < ActiveRecord::Base
 
 
 	# def self.search(q)
- #  		where("card_name like ?", "%#{q}%") 
+ 	#  		where("card_name like ?", "%#{q}%") 
 	# end
 
 	def self.complex_query(query_hash) 

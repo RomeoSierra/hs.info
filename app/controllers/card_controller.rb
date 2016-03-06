@@ -9,15 +9,6 @@ class CardController < ApplicationController
 
 	def index
 		@cards = Card.complex_query(params)
-
-
-		# when query_hash.present?
-
-  # 		when params[:search].present?
-  #   		@cards = Card.search(params[:search])
-  # 		else
-  #   		@cards = Card.all
-  # 		end
 	end
 	
 end
