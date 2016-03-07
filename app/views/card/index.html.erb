@@ -6,19 +6,36 @@
   <%= render 'navigation' %>
 </div>
 
-<table class="hearts">
+<% if @cards.count(params[:ids]) > 10 then %>
+	<table class="hearts">
+		<% @cards.each do |card| %>
+			
+			  <tr>
+			    <td><%= link_to card.card_name, card_path(card.set_sym) %></td>
+			    <td><%= card.align.to_s.capitalize %></td>
+			    <td><%= card.card_type.capitalize %> <!-- <td><%= "(#{card.subtype})" if card.subtype.present? %></td> --> </td>
+			    <td>(<%= card.cost; %>) <%= "#{card.power}/#{card.toughness}" if card.power.present? && card.toughness.present? %></td>
+			    <td><%= card.set; %> <!-- <br><%= "(#{card.rarity.capitalize})" unless card.rarity == "basic" %> --> </td>
+			    <td><%= card.card_text %></td>
+			  </tr>
+			
+		<% end %>
+	</table>
+<% else %>
+  		<% @cards.each do |card| %>
+  		
+  		<div class="chips">
+			<%= link_to image_tag("#{card.set_sym}.png"), "/c/#{card.set_sym}" %>
+		</div>
+		<div class="chips">
+    	<h2> <%= link_to card.card_name, card_path(card.set_sym) %> </h2>
 
-<% @cards.each do |card| %>
-  <tr>
-    <td><%= link_to card.card_name, card_path(card.set_sym) %></td>
-    <td><%= card.align.to_s.capitalize %></td>
-    <td><%= card.card_type.capitalize %></td>
-    <!-- <td><%= "(#{card.subtype})" if card.subtype.present? %></td> -->
-    <td>(<%= card.cost; %>) <%= "#{card.power}/#{card.toughness}" if card.power.present? && card.toughness.present? %></td>
-    <td><%= card.set; %>
-    	<!-- <br><%= "(#{card.rarity.capitalize})" unless card.rarity == "basic" %> -->
-    </td>
-    <td><%= card.card_text %></td>
-  </tr>
+    	<p> <%= card.align.capitalize %> <%= card.card_type.capitalize; %> <%= "(#{card.subtype})" if card.subtype.present? %> </p>
+    	<p> (<%= card.cost; %>) <%= "#{card.power}/#{card.toughness}" if card.power.present? && card.toughness.present? %></p>
+    	<p> Card Text: <%= card.card_text %></p>
+    	<p> Set: <%= card.set; %> <%= "(#{card.rarity.capitalize})" unless card.rarity == "basic" %> </p>
+	  	</div><br>
+		<% end %>
+
 <% end %>
-</table>
+

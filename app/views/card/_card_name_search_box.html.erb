@@ -1,4 +1,5 @@
 <%= form_tag(index_path, :method => "get", id: "simple-search") do %>
   <%= text_field_tag :q_name, params[:q_name], placeholder: "Search Cards by Name" %>
-  <%= submit_tag "Search", :q_name => nil %>
+  <%= hidden_field_tag(:q_collect, true) %>
+  <%= submit_tag "Search"%>
 <% end %>

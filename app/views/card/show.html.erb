@@ -7,7 +7,17 @@
 </div>
 
 <div>
-  <%= render 'simple' %>
+	<div class="chips">
+		<%= link_to image_tag("#{@card.set_sym}.png"), "/c/#{@card.set_sym}" %>
+	</div>
+	<div class="chips">
+    <h2> <%= link_to @card.card_name, card_path %> </h2>
+
+    <p> <%= @card.align.capitalize %> <%= @card.card_type.capitalize; %> <%= "(#{@card.subtype})" if @card.subtype.present? %> </p>
+    <p> (<%= @card.cost; %>) <%= "#{@card.power}/#{@card.toughness}" if @card.power.present? && @card.toughness.present? %></p>
+    <p> Card Text: <%= @card.card_text %></p>
+    <p> Set: <%= @card.set; %> <%= "(#{@card.rarity.capitalize})" unless @card.rarity == "basic" %> </p>
+</div>
 </div>
 
 <div>

@@ -1,12 +1,12 @@
 
 .spades {
 	display: inline-block;
-	padding: 20px;
+	padding: 20px 10px 5px 20px;
 	font-weight: bold;
 }
 
 .clubs {
-	padding: 20px 20px 40px 20px;
+	padding: 15px 20px 15px 20px;
 }
 
 body {
@@ -23,4 +23,9 @@ nav {
 
 .hearts td {
 	padding: 3px;
+}
+
+.chips {
+	display: inline-block;
+	padding: 5px 0px 5px 10px;
 }
