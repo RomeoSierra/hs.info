@@ -7,10 +7,6 @@ class Card < ActiveRecord::Base
 	enum rarity: [ :basic, :common, :rare, :epic, :legendary ]
 
 
-	# def self.simple_search(q)
- # 	 		where("card_name like ?", "%#{q[:q_name]}%") 
-	# end
-
 	def self.complex_query(query_hash) 
 
 		q_results = Card.all

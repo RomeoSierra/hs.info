@@ -2,14 +2,21 @@
 <%= stylesheet_link_tag "reset.css" %>
 <%= stylesheet_link_tag "main.css" %>
 
-<div>
-  <%= render 'navigation' %>
-</div>
+	<div>
+	  <%= render 'navigation' %>
+	</div>
 
 <% if @cards.count(params[:ids]) > 10 then %>
 	<table class="hearts">
+			<tr class="shoe">
+				<td>Card Name</td>
+				<td>Class</td>
+				<td>Type</td>
+				<td>Stats</td>
+				<td>Set</td>
+				<td>Rules Text</td>
+			</tr>
 		<% @cards.each do |card| %>
-			
 			  <tr>
 			    <td><%= link_to card.card_name, card_path(card.set_sym) %></td>
 			    <td><%= card.align.to_s.capitalize %></td>
@@ -21,6 +28,8 @@
 			
 		<% end %>
 	</table>
+<% elsif @cards.count(params[:ids]) == 0 then %>
+	<h2>We couldn't find any cards matching that description</h2>
 <% else %>
   		<% @cards.each do |card| %>
   		
