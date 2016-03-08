@@ -46,15 +46,15 @@
   </tr>
   <tr>
     <td>Cost</td>
-    <td><%= select_tag :q_cost_mod, options_for_select([["=", "1"], ["<", "2"], [">", "3"], ["<=", "4"], [">=", "5"]]), multiple: false %><%= select_tag :q_cost_val, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["12", "12"], ["20", "20"]]), include_blank: "" %></td>
+    <td><%= select_tag :q_cost_mod, options_for_select([["=", "="], ["<", "<"], [">", ">"], ["<=", "<="], [">=", ">="]]), multiple: false %><%= select_tag :q_cost_val, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["12", "12"], ["20", "20"]]), include_blank: "" %></td>
   </tr>
   <tr>
     <td>Attack</td>
-    <td><%= select_tag :q_power_mod, options_for_select([["=", "1"], ["<", "2"], [">", "3"], ["<=", "4"], [">=", "5"]]), multiple: false %><%= select_tag :q_power_val, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"]]), include_blank: "" %></td>
+    <td><%= select_tag :q_power_mod, options_for_select([["=", "="], ["<", "<"], [">", ">"], ["<=", "<="], [">=", ">="]]), multiple: false %><%= select_tag :q_power_val, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"]]), include_blank: "" %></td>
   </tr>
   <tr>
     <td>Health(Durability)</td>
-    <td><%= select_tag :q_toughness_mod, options_for_select([["=", "1"], ["<", "2"], [">", "3"], ["<=", "4"], [">=", "5"]]), multiple: false %><%= select_tag :q_toughness_val, options_for_select([["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["15", "15"]]), include_blank: "" %></td>
+    <td><%= select_tag :q_toughness_mod, options_for_select([["=", "="], ["<", "<"], [">", ">"], ["<=", "<="], [">=", ">="]]), multiple: false %><%= select_tag :q_toughness_val, options_for_select([["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["15", "15"]]), include_blank: "" %></td>
   </tr>
   <tr>
     <td>Card Text</td>

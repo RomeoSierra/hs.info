@@ -27,9 +27,17 @@ class Card < ActiveRecord::Base
 
 		q_results = q_results.where("card_text like ?", "%#{query_hash[:q_rules_text]}%") if query_hash[:q_rules_text].present?
 
+		q_results = q_results.where("cost #{query_hash[:q_cost_mod]} ?", query_hash[:q_cost_val]) if query_hash[:q_cost_val].present?
+
+		q_results = q_results.where("power #{query_hash[:q_power_mod]} ?", query_hash[:q_power_val]) if query_hash[:q_power_val].present?
+
+		q_results = q_results.where("toughness #{query_hash[:q_toughness_mod]} ?", query_hash[:q_toughness_val]) if query_hash[:q_toughness_val].present?
+
 		# q_results = q_results.where(wild_legal: query_hash[:q_wild_legal]) if :q_wild_legal.present?
 
 		# q_results = q_results.where(kraken_legal: query_hash[:q_kraken_legal].present?) if query_hash[:q_kraken_legal].present?
+
+		q_results.order(align: :asc)
 
 		return q_results
 	end

@@ -9,7 +9,7 @@ class CardController < ApplicationController
 	def index
 		@cards = Card.complex_query(params)
 
-		if @cards.count == 1
+		if @cards.count(:id) == 1
 			redirect_to "/c/#{@cards.first.set_sym}"
 		else
 			return @cards
