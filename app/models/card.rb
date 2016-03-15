@@ -7,83 +7,40 @@ class Card < ActiveRecord::Base
 	enum rarity: [ :basic, :common, :rare, :epic, :legendary ]
 
 
-	def self.search(q)
-  		where("card_name like ?", "%#{q}%") 
+	def self.complex_query(query_hash) 
+
+		q_results = Card.all
+
+		q_results = q_results.where(independent: query_hash[:q_collect]) if :q_collect.present?
+
+		q_results = q_results.where("card_name like ?", "%#{query_hash[:q_name]}%") if query_hash[:q_name].present?
+
+		q_results = q_results.where(set: query_hash[:q_set]) if query_hash[:q_set].present?
+
+		q_results = q_results.where(rarity: query_hash[:q_rarity]) if query_hash[:q_rarity].present?
+
+		q_results = q_results.where(align: query_hash[:q_align]) if query_hash[:q_align].present?
+
+		q_results = q_results.where(card_type: query_hash[:q_type]) if query_hash[:q_type].present?
+
+		q_results = q_results.where(subtype: query_hash[:q_subtype]) if query_hash[:q_subtype].present?
+
+		q_results = q_results.where("card_text like ?", "%#{query_hash[:q_rules_text]}%") if query_hash[:q_rules_text].present?
+
+		q_results = q_results.where("cost #{query_hash[:q_cost_mod]} ?", query_hash[:q_cost_val]) if query_hash[:q_cost_val].present?
+
+		q_results = q_results.where("power #{query_hash[:q_power_mod]} ?", query_hash[:q_power_val]) if query_hash[:q_power_val].present?
+
+		q_results = q_results.where("toughness #{query_hash[:q_toughness_mod]} ?", query_hash[:q_toughness_val]) if query_hash[:q_toughness_val].present?
+
+		# q_results = q_results.where(wild_legal: query_hash[:q_wild_legal]) if :q_wild_legal.present?
+
+		# q_results = q_results.where(kraken_legal: query_hash[:q_kraken_legal].present?) if query_hash[:q_kraken_legal].present?
+
+		# q_results.order(align: :asc)
+
+		return q_results
 	end
 
-	# def results
-	# 	@results ||= find_cards
-	# end
-
-
-	# private
-
-	# def find_cards
-	# 	Card.find(:all, :conditions => conditions)
-	# end
-
-	# def card_name_conditions
-	# 	["card.card_name LIKE ?", "%#{keywords}%"] unless keywords.blank?
-	# end
-
-	# def align_conditions
-	# 	["card.align LIKE ?", "%#{q_align}%"] unless q_align.blank? #allow selecting multiple, return cards that match any
-	# end
-
-	# def rarity_conditions
-	# 	["card.align LIKE ?", "%#{q_rarity}%"] unless q_rarity.blank? #allow selecting multiple, return cards that match any
-	# end
-
-	# def set_conditions
-	# 	["card.set LIKE ?", "%#{q_set}%"] unless q_set.blank? #allow selecting multiple, return cards that match any
-	# end
-
-	# def type_conditions
-	# 	["card.type LIKE ?", "%#{q_type}%"] unless q_type.blank? #allow selecting multiple, return cards that match any
-	# end
-
-	# def subtype_conditions
-	# 	["card.subtype LIKE ?", "%#{q_subtype}%"] unless q_subtype.blank? #allow selecting multiple, return cards that match any
-	# end
-
-	# def cost_conditions
-	# 	["card.cost LIKE ?", q_cost] unless q_cost.blank? #need to figure out how to handle equivilancy operators
-	# end
-
-	# def power_conditions
-	# 	["card.power LIKE ?", q_power] unless q_power.blank? #need to figure out how to handle equivilancy operators, also how does this handle nil?
-	# end
-
-	# def toughness_conditions
-	# 	["card.toughness LIKE ?", q_toughness] unless q_toughness.blank? #need to figure out how to handle equivilancy operators, also how does this handle nil?
-	# end
-
-	# def rules_text_conditions
-	# 	["card.card_text LIKE ?", "%#{q_rules_text}%"] unless q_rules_text.blank?
-	# end
-
-	# def collectible_conditions
-	# 	["card.independent LIKE ?", true] unless exclude_depentent.blank?
-	# end
-
-	# # def flavor_text_conditions
-	# # 	["card.flavor_text LIKE ?", "%#{q_flavor_text}%"] unless q_flavor_text.blank?
-	# # end
-
-	# def conditions
- #  		[conditions_clauses.join(' AND '), *conditions_options]
-	# end
-
-	# def conditions_clauses
-	# 	conditions_parts.map { |condition| condition.first }
-	# end
-
-	# def conditions_options
-	# 	conditions_parts.map { |condition| condition[1..-1] }.flatten
-	# end
-
-	# def conditions_parts
-	# 	private_methods(false).grep(/_conditions$/).map { |m| send(m) }.compact
-	# end
-
+	
 end

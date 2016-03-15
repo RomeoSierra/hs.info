@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120190341) do
+ActiveRecord::Schema.define(version: 20160306194334) do
 
   create_table "cards", force: :cascade do |t|
     t.string  "set_sym"
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 20160120190341) do
     t.integer "toughness"
     t.string  "card_text"
     t.string  "flavor_text"
-    t.string  "image"
-    t.string  "golden_image"
     t.string  "artist"
     t.boolean "independent"
     t.string  "created_cards"
     t.string  "trivia"
+    t.boolean "wild_legal"
+    t.boolean "kraken_legal"
   end
 
 end

@@ -5,18 +5,15 @@ class CardController < ApplicationController
 	def show
 		@card = Card.find_by( set_sym: params[:set_sym] )
 	end
-	
 
 	def index
-  		if params[:search]
-    		@cards = Card.search(params[:search])
-  		else
-    		@cards = Card.all
-  		end
+		@cards = Card.complex_query(params)
+
+		if @cards.count(:id) == 1
+			redirect_to "/c/#{@cards.first.set_sym}"
+		else
+			return @cards
+		end
 	end
 	
-
-	def search
-  		@cards = Card.search(params[:search])
-	end
 end

@@ -1,0 +1,12 @@
+<nav>
+	<ul>
+		<li class="spades"><a href="/main">Main</a></li>
+		<li class="spades"><a href="/adv">Advanced</a></li>
+		<li class="spades"><a href="#">About</a></li>
+	</ul>
+
+	<div class="clubs">
+  		<%= render 'card_name_search_box' %>
+	</div>
+
+</nav>

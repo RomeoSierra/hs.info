@@ -1,0 +1,35 @@
+
+.spades {
+	display: inline-block;
+	padding: 20px 10px 5px 20px;
+	font-weight: bold;
+}
+
+.clubs {
+	padding: 15px 20px 15px 20px;
+}
+
+body {
+	background-color: tan;
+}
+
+nav {
+	background-color: brown;
+}
+
+.diamonds td {
+	padding: 7px;
+}
+
+.hearts td {
+	padding: 3px;
+}
+
+.chips {
+	display: inline-block;
+	padding: 5px 0px 5px 10px;
+}
+
+.shoe td {
+	text-decoration: underline;
+}

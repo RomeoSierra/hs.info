@@ -3,7 +3,7 @@
 <div>
 	<h2> Related Cards: </h2>
 
-	<% @card.created_cards.split(" ").each do |sym| %>
+	<% @card.created_cards.to_s.split(" ").each do |sym| %>
 	<%= link_to image_tag("#{sym}.png"), "/c/#{sym}" %>
 	<% end %>
 

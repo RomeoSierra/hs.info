@@ -1,20 +1,74 @@
-<% if false %>
 
-<% form_for @results do |c| %>
-  <p>
-    <%= c.label :keywords %><br />
-    <%= c.text_field :keywords %>
-  </p>
-  <p>
-    <%= c.label :q_align %><br />
-    <%= c.collection_select :q_align, Align.all, :id, :name, :include_blank => true %>
-  </p>
-  <p>
-    Price Range<br />
-    <%= c.text_field :minimum_price, :size => 7 %> -
-    <%= c.text_field :maximum_price, :size => 7 %>
-  </p>
-  <p><%= c.submit "Submit" %></p>
-<% end %>
+<%= stylesheet_link_tag "reset.css" %>
+<%= stylesheet_link_tag "main.css" %>
 
-<% end %>
+<div>
+  <%= render 'navigation' %>
+</div>
+
+<h1>Advanced Search</h1>
+
+<table class="diamonds">
+  <%= form_tag(index_path, :method => "get", id: "complex-search") do %>
+  <tr>
+    <td>Card Name</td>
+    <td><%= text_field_tag :q_name, params[:q_name], placeholder: "" %></td>
+  </tr>
+  <tr>
+    <td>Set</td>
+    <td>
+      <%= select_tag :q_set, options_for_select([["Basic", "Basic"], ["Classic", "Classic"], ["Reward", "Reward"], ["Naxxramas", "Naxxramas"], ["Goblins vs Gnomes", "Goblins vs Gnomes"], ["Blackrock Mountain", "Blackrock Mountain"], ["The Grand Tournament", "The Grand Tournament"], ["League of Explorers", "League of Explorers"]]), multiple: true, include_blank: "", :size => 5 %>
+    </td>
+  </tr>
+  <tr>
+    <td>Rarity</td>
+    <td>
+      <%= select_tag :q_rarity, options_for_select([["Basic", "0"], ["Common", "1"], ["Rare", "2"], ["Epic", "3"], ["Legendary", "4"]]), multiple: true, include_blank: "", :size => 6 %>
+    </td>
+  </tr>
+  <tr>
+    <td>Class</td>
+    <td>
+      <%= select_tag :q_align, options_for_select([["Druid", "0"], ["Hunter", "1"], ["Mage", "2"], ["Paladin", "3"], ["Priest", "4"], ["Rogue", "5"], ["Shaman", "6"], ["Warlock", "7"], ["Warrior", "8"], ["Neutral", "9"]]), multiple: true, include_blank: "", :size => 11 %>
+    </td>
+  </tr>
+  <tr>
+    <td>Card Type</td>
+    <td>
+      <%= select_tag :q_type, options_for_select([["Minion", "0"], ["Spell", "1"], ["Weapon", "2"]]), multiple: true, include_blank: "", :size => 4 %>
+    </td>
+  </tr>
+  <tr>
+    <td>Subtype</td>
+    <td>
+      <%= select_tag :q_subtype, options_for_select([["Beast", "Beast"], ["Demon", "Demon"], ["Dragon", "Dragon"], ["Mech", "Mech"], ["Murloc", "Murloc"], ["Pirate", "Pirate"], ["Totem", "Totem"], ["Secret", "Secret"]]), multiple: true, include_blank: "", :size => 5 %>
+    </td>
+  </tr>
+  <tr>
+    <td>Cost</td>
+    <td><%= select_tag :q_cost_mod, options_for_select([["=", "="], ["<", "<"], [">", ">"], ["<=", "<="], [">=", ">="]]), multiple: false %><%= select_tag :q_cost_val, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["12", "12"], ["20", "20"]]), include_blank: "" %></td>
+  </tr>
+  <tr>
+    <td>Attack</td>
+    <td><%= select_tag :q_power_mod, options_for_select([["=", "="], ["<", "<"], [">", ">"], ["<=", "<="], [">=", ">="]]), multiple: false %><%= select_tag :q_power_val, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"]]), include_blank: "" %></td>
+  </tr>
+  <tr>
+    <td>Health(Durability)</td>
+    <td><%= select_tag :q_toughness_mod, options_for_select([["=", "="], ["<", "<"], [">", ">"], ["<=", "<="], [">=", ">="]]), multiple: false %><%= select_tag :q_toughness_val, options_for_select([["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["15", "15"]]), include_blank: "" %></td>
+  </tr>
+  <tr>
+    <td>Card Text</td>
+    <td><%= text_field_tag :q_rules_text, params[:q_rules_text], placeholder: "" %></td>
+  </tr>
+  <!-- <tr>
+    <td>Format Legality</td>
+    <td><%= check_box_tag(:q_kraken_legal)%>
+        <%= label_tag(:q_kraken_legal, "Standard") %></td>
+  </tr> -->
+  <tr>
+    <%= hidden_field_tag(:q_collect, true) %>
+    <td><%= submit_tag "Search"%></td>
+  </tr>
+  <% end %>
+</table>
+
