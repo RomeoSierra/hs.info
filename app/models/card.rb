@@ -37,7 +37,7 @@ class Card < ActiveRecord::Base
 
 		# q_results = q_results.where(kraken_legal: query_hash[:q_kraken_legal].present?) if query_hash[:q_kraken_legal].present?
 
-		q_results.order(align: :asc)
+		# q_results.order(align: :asc)
 
 		return q_results
 	end

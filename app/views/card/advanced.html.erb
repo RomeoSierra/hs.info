@@ -60,11 +60,11 @@
     <td>Card Text</td>
     <td><%= text_field_tag :q_rules_text, params[:q_rules_text], placeholder: "" %></td>
   </tr>
-  <tr>
+  <!-- <tr>
     <td>Format Legality</td>
     <td><%= check_box_tag(:q_kraken_legal)%>
         <%= label_tag(:q_kraken_legal, "Standard") %></td>
-  </tr>
+  </tr> -->
   <tr>
     <%= hidden_field_tag(:q_collect, true) %>
     <td><%= submit_tag "Search"%></td>
