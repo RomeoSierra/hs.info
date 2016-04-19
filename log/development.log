@@ -481,3 +481,22 @@ Started GET "/assets/card.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450
 
 
 Started GET "/assets/nax019-7bd9f1ee2f8977596772773b7c1cad10962a5121fcc5c0397ab8c2e613715767.png" for 127.0.0.1 at 2016-04-13 18:13:34 -0400
+
+
+Started GET "/adv" for 127.0.0.1 at 2016-04-19 12:44:00 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CardController#advanced as HTML
+DEPRECATION WARNING: The file /home/romeosierra/hs.info/app/views/card/_navigation did not specify a template handler. The default is currently ERB, but will change to RAW in the future. (called from _app_views_card_advanced_html_erb___218905774__1041317918 at /home/romeosierra/hs.info/app/views/card/advanced.html.erb:6)
+  Rendered card/_card_name_search_box.html.erb (1.6ms)
+  Rendered card/_navigation (16.0ms)
+  Rendered card/advanced.html.erb within layouts/application (603.5ms)
+Completed 200 OK in 6090ms (Views: 6041.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/adv" for 127.0.0.1 at 2016-04-19 12:44:07 -0400
+Processing by CardController#advanced as HTML
+DEPRECATION WARNING: The file /home/romeosierra/hs.info/app/views/card/_navigation did not specify a template handler. The default is currently ERB, but will change to RAW in the future. (called from _app_views_card_advanced_html_erb___218905774__1041317918 at /home/romeosierra/hs.info/app/views/card/advanced.html.erb:6)
+  Rendered card/_card_name_search_box.html.erb (0.4ms)
+  Rendered card/_navigation (5.2ms)
+  Rendered card/advanced.html.erb within layouts/application (107.6ms)
+Completed 200 OK in 368ms (Views: 367.7ms | ActiveRecord: 0.0ms)
